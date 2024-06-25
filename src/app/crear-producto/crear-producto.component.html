@@ -1,0 +1,149 @@
+<div class="container mt-3" id="pdfForm">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <header class="d-flex justify-content-between align-items-center">
+            <img class="imgForm" src="https://static.vecteezy.com/system/resources/previews/007/943/837/non_2x/glasses-logo-design-illustration-of-optical-tools-to-style-and-maintain-eye-health-free-vector.jpg" alt="">
+            <span class="titulo">{{ titulo | uppercase }}</span>
+            <p class="numeroFormulario fw-bold">N° <input type="text" class="form-control form-control-sm float-end" [readonly]="true" [value]="id"></p>
+          </header>
+          <form class="mt-3 text-center" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+            <div class="d-flex justify-content-between mb-3">
+              <div class="form-floating col-md-7">
+                <input type="text" formControlName="vendedor" class="input form-control form-control-lg border-0 shadow-none" placeholder="Vendedor">
+                <label for="floatingInput">Vendedor</label>
+                <div class="text-danger" *ngIf="productoForm.get('vendedor')?.invalid && productoForm.get('vendedor')?.touched">
+                  <span>El vendedor es <strong>OBLIGATORIO</strong></span>
+                </div>
+              </div>
+              <div class="form-floating col-md-4">
+                <input type="date" formControlName="fecha" class="input form-control form-control-lg border- 0 shadow-none" placeholder="Fecha">
+                <label for="floatingInput">Fecha</label>
+                <div class="text-danger" *ngIf="productoForm.get('fecha')?.invalid && productoForm.get('fecha')?.touched">
+                  <span>La fecha del producto es <strong>OBLIGATORIA</strong></span>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" formControlName="nombre" class="input form-control form-control-lg border-0 shadow-none " placeholder="Nombre Cliente">
+              <label for="floatingInput">Nombre</label>
+              <div class="text-danger" *ngIf="productoForm.get('nombre')?.invalid && productoForm.get('nombre')?.touched">
+                <span>El nombre del producto es <strong>OBLIGATORIO</strong></span>
+              </div>
+
+              <div class="d-flex justify-content-between mt-3 mb-3 ">
+                <div class="form-floating">
+                  <input type="text" formControlName="rut" class="input form-control form-control-lg border-0 shadow-none" placeholder="Rut">
+                  <label for="floatingInput">Rut</label>
+                  <div class="text-danger" *ngIf="productoForm.get('rut')?.invalid && productoForm.get('rut')?.touched">
+                    <span>El Rut del producto es <strong>OBLIGATORIO</strong></span>
+                  </div>
+                </div>
+                <div class="form-floating">
+                  <input type="number" formControlName="telefono" class="input form-control form-control-lg  border-0 shadow-none" placeholder="Teléfono">
+                  <label for="floatingInput">Telefono</label>
+                  <div class="text-danger" *ngIf="productoForm.get('telefono')?.invalid && productoForm.get('telefono')?.touched">
+                    <span>El teléfono del producto es <strong>OBLIGATORIO</strong></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Inicio del FormArray para tablas -->
+            <div class="mb-3">
+              <div class="container mt-4 mb-4" id="formulario">
+                <div class="inline-block justify-content-center text-center">
+                  <button type="button" class="btn btn-primary float-end btn-sm" (click)="agregarNuevaTabla()">+</button>
+                  <button type="button" class="btn btn-danger btn-sm float-start btn-sm" (click)="eliminarTabla(1)">-</button>
+                  <h2 class="text-center mb-2">Fórmula</h2>
+                </div>
+                <div formArrayName="tablas">
+                  <ng-container *ngFor="let tabla of tablas.controls; let i = index" [formGroupName]="i">
+                    <table class="table table-bordered table-hover table-striped">
+                      <thead>
+                        <tr>
+                          <th scope="col"></th>
+                          <th scope="col">Esferico</th>
+                          <th scope="col">Cilindro</th>
+                          <th scope="col">Eje</th>
+                          <th scope="col">Adicion</th>
+                          <th scope="col">Dp</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>O.D</td>
+                          <td><input type="text" class="form-control" formControlName="odEsferico" placeholder="Esferico"></td>
+                          <td><input type="text" class="form-control" formControlName="odCilindro" placeholder="Cilindro"></td>
+                          <td><input type="text" class="form-control" formControlName="odEje" placeholder="Eje"></td>
+                          <td><input type="text" class="form-control" formControlName="odAdicion" placeholder="Adicion"></td>
+                          <td><input type="text" class="form-control" formControlName="odDp" placeholder="Dp"></td>
+                        </tr>
+                        <tr>
+                          <td>O.S</td>
+                          <td><input type="text" class="form-control" formControlName="osEsferico" placeholder="Esferico"></td>
+                          <td><input type="text" class="form-control" formControlName="osCilindro" placeholder="Cilindro"></td>
+                          <td><input type="text" class="form-control" formControlName="osEje" placeholder="Eje"></td>
+                          <td><input type="text" class="form-control" formControlName="osAdicion" placeholder="Adicion"></td>
+                          <td><input type="text" class="form-control" formControlName="osDp" placeholder="Dp"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+            <div class="d-flex justify-content-around">
+              <div class="col-md-4 form-floating">
+                <input type="text" formControlName="precio" class="input form-control form-control-lg border-0 and shadow-none"
+                       placeholder="Precio" 
+                       [value]="productoForm.get('precio')?.value|currency:'USD':'symbol':'1.0-0'">
+                <label for="floatingInput">Precio</label>
+                <div class="text-danger" *ngIf="productoForm.get('precio')?.invalid && productoForm.get('precio')?.touched">
+                  <span>El precio del producto es <strong>OBLIGATORIO</strong></span>
+                </div>
+              </div>
+              
+              <div class="col-md-4 form-floating">
+                <input type="text" formControlName="abono" class="input form-control form-control-lg decoration-none border-0 and shadow-none"
+                       placeholder="Abono" 
+                       [value]="productoForm.get('abono')?.value |currency:'USD':'symbol':'1.0-0'">
+                <label for="floatingInput">Abono</label>
+                <div class="text-danger" *ngIf="productoForm.get('abono')?.invalid && productoForm.get('abono')?.touched">
+                  <span>El abono del producto es <strong>OBLIGATORIO</strong></span>
+                </div>
+              </div>
+              
+              
+              <div class="col-md-3  form-floating">
+                <input type="text" formControlName="saldo" class="input form-control form-control-lg border-0 shadow-none" placeholder="Saldo" [value]="productoForm.get('saldo')?.value | currency:'USD':'symbol':'1.0-0'" readonly>
+                <label for="floatingInput">Por pagar</label>
+              </div>
+            </div>
+            <div class="mb-3 mt-4">
+              <label class="float-start"  for="form-floating">tipo de Pago</label>
+              <select formControlName="tipoPago" class="input form-control form-control-sm  shadow-none">
+                <option value="" disabled selected>Selecciona un Tipo de Pago</option>
+                <option value="efectivo">Efectivo</option>
+                <option value="tarjeta">Tarjeta</option>
+                <option value="transferencia">Transferencia</option>
+              </select>
+              <div class="text-danger" *ngIf="productoForm.get('tipoPago')?.invalid && productoForm.get('tipoPago')?.touched">
+                <span>El tipo de pago del producto es <strong>OBLIGATORIO</strong></span>
+              </div>
+            </div>
+            <div class="mb-3">
+              <textarea type="text" formControlName="observacion" class="form-control form-control-lg" placeholder="Observación"></textarea>
+              <div class="text-danger" *ngIf="productoForm.get('observacion')?.invalid && productoForm.get('observacion')?.touched">
+                <span>La observación del producto es <strong>OBLIGATORIA</strong></span>
+              </div>
+            </div>
+            <button type="button" class=" btn  btn-sm float-center " button *ngIf="id !== null" (click)="descargarPDF()"><svg xmlns="http://www.w3.org/2000/svg" height="30" width="30" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg></button>
+            <button type="submit" [disabled]="productoForm.invalid" class="btn btn-success btn-lg float-end">Aceptar</button>
+            <button type="button" class="btn btn-primary btn-lg float-start" (click)="volver()">Volver</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

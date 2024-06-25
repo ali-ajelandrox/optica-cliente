@@ -1,0 +1,53 @@
+    .table-hover tbody tr:hover {
+        background-color: #007bff; /* Cambiar a azul al pasar el cursor */
+        color: #fff; /* Cambiar el color del texto a blanco */
+    }
+
+    .numeroFormulario{
+        width: 50px;
+        margin-right: 70px;
+    }
+
+    .imgForm{
+        width: 120px;
+        height: 120px;
+    }
+
+    label{
+      font-size: 15px;
+      
+
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      }
+      
+      
+       input[type=date]::-webkit-inner-spin-button, 
+      input[type=date]::-webkit-outer-spin-button { 
+        -webkit-appearance: none; 
+        margin: 0; 
+      }
+
+    .floatingInput{
+        position: absolute;
+        border-bottom: 1px solid #c7c7c7;
+
+    }
+
+    .descarga{
+      width: 50px;
+    }
+
+  .card-body{
+    box-shadow: 10px 1px 89px 1px rgba(0,0,0,0.75);
+  }
+
+
+  .text-danger{
+    font-size: 10px;
+  }
+

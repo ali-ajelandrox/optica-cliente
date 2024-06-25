@@ -1,0 +1,41 @@
+body {
+    width: 100%;
+    background: #800080;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffc0cb, #800080);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffc0cb, #800080); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: no-repeat;
+    background: cover;
+  }
+  
+  .navbar {
+    width: 100%;
+
+  }
+
+  .table {
+    width: 50%;
+  }
+  
+  .grafica {
+    padding-top: 70px; /* Add padding to prevent overlap with navbar */
+  }
+  
+  @media (max-width: 768px) {
+    .grafica {
+      padding-top: 100px; /* Increase padding for smaller screens */
+    }
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 80%;
+  }
+  
+  .ngx-charts-bar-vertical {
+    width: 100%;
+    height: auto;
+  }
+  
