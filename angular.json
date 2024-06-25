@@ -37,9 +37,19 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "node_modules/apexcharts/dist/apexcharts.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/html2canvas/dist/html2canvas.min.js",
+              "node_modules/jspdf/dist/jspdf.es.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -95,6 +105,7 @@
               }
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -102,5 +113,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "c426ef6e-c132-4d17-a0a1-30a675c05b2c"
   }
 }

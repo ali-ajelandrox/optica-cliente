@@ -1,0 +1,79 @@
+.fondo{
+
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 70%;
+    height: 100vh;
+    border-radius: 47vh 0vh 0vh 47vh;
+    background-size: cover;
+    z-index: -1; /* Asegura que esté detrás de todo el contenido */
+    box-shadow: -6px 1px 34px 11px rgba(0,0,0,0.75);
+    overflow: hidden;
+
+}
+
+body{
+  position: relative;
+    z-index: 1; 
+}
+
+.card{
+  overflow: hidden;
+  transition: all 0.3s;
+  filter: grayscale(70%);
+}
+.card:hover{  transform: translateY(-15px);
+    box-shadow: 10px 10px 5px 5px  rgba(0,0,0,0.75);
+    filter: grayscale(0%);
+  }
+
+.option1{
+  background-image: url(https://st4.depositphotos.com/12985790/21647/i/450/depositphotos_216476020-stock-photo-happy-woman-choosing-eyeglasses-while.jpg);
+  background-size: cover;
+  height: 210px;
+ 
+}
+
+
+.option2{
+  background-image: url(https://st2.depositphotos.com/5996982/8732/i/450/depositphotos_87322742-stock-photo-eye-glasses-pen-and-pencil.jpg);
+  background-size: cover;
+  height: 210px;
+}
+.option3{
+  background-image: url(https://st.depositphotos.com/1010683/4196/i/450/depositphotos_41969433-stock-photo-graphical-chart.jpg);
+  background-size: cover;
+  height: 210px;
+}
+
+.imgForm{
+  width: 120px;
+  height: 120px;
+  border-radius: 200px;
+  margin-left: 20px;
+
+}
+
+input{
+  margin-right: 650px;
+  width: 250px;
+  justify-content: center;
+}
+
+.container{
+  margin-top: 120px;
+
+}
+
+.buscador {
+  background-color: rgb(220, 121, 233);
+  box-shadow: inset 6px -13px 8px 0.3px rgba(0, 0, 0, 0.4);
+  font-size: large;
+  border: none;
+  transition: all 0.5s
+}
+
+.buscador:hover {
+  box-shadow: none;
+}

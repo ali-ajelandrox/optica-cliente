@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">Registro de Ventas</span>
+          <button class="btn btn-primary float-start" routerLink="''">Atras</button>
+          <button class="btn btn-success float-end" [routerLink]="['/crear-producto']" [queryParams]="{ from: 'listar-productos' }">Nuevo</button>
+          
+          <div class="table-responsive  ">
+            <table  id="tabla"  class="table table-striped mt-6  table-fixed">
+              <thead>
+                <tr>
+                  <th scope="col">Item</th>
+                  <th scope="col">Vendedor</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">RUT</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Precio</th>
+                  <th scope="col">Abono</th>
+                  <th scope="col">Saldo</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Tipo de Pago</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of listProductos">
+                  <td class="text-wrap">{{ producto._id }}</td>
+                  <td class="text-wrap">{{ producto.vendedor }}</td>
+                  <td class="text-wrap">{{ producto.nombre }}</td>
+                  <td class="text-wrap">{{ producto.rut }}</td>
+                  <td class="text-wrap">{{ producto.telefono }}</td>
+                  <td class="text-wrap">{{ producto.precio | currency:'USD' }}</td>
+                  <td class="text-wrap">{{ producto.abono | currency:'USD' }}</td>
+                  <td class="text-wrap">{{ producto.saldo | currency:'USD' }}</td>
+                  <td class="text-wrap">{{ producto.fecha | date:'short' }}</td>
+                  <td class="text-wrap">{{ producto.tipoPago }}</td>
+                  <td>
+                    <i [routerLink]="['/editar-producto', producto._id]" class="icono fas fa-pen-to-square text-primary"></i>
+                    <i (click)="eliminarProducto(producto._id)" class="icono fas fa-trash text-danger"></i>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+           
+          </div>
+          <button class="btn btn-primary mt-3 float-end" (click)="descargarExcel()">Descargar Excel</button>
+          <h5 *ngIf="listProductos.length === 0" style="margin-top: start; text-align: start;">No hay productos para mostrar</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div>
+  <canvas #myChart width="400" height="400"></canvas>
+</div>
